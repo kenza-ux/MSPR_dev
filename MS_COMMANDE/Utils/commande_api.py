@@ -95,5 +95,7 @@ def delete_commande(id):
     else:
         return make_response(jsonify({"error": "Commande not found"}), 404)
 
+
+# penser à faire la méthode patch afin d'éviter d'écraser tous les id avec les modifs d'une seule commandes
 if __name__ == '__main__':
     app.run(debug=True)
