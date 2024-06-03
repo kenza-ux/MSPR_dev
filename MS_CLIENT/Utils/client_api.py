@@ -22,7 +22,7 @@ def get_db_connection():
     connection = pymysql.connect(**db_config)
     return connection
 
-@app.route('/customers', methods=['GET'])
+@app.route('/customers', methods=['GET']) # tested
 def get_customers():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -32,7 +32,7 @@ def get_customers():
     conn.close()
     return jsonify(customers)
 
-@app.route('/customers/<int:id>', methods=['GET'])
+@app.route('/customers/<int:id>', methods=['GET']) #tested
 def get_customer(id):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -45,7 +45,7 @@ def get_customer(id):
     else:
         return make_response(jsonify({"error": "Customer not found"}), 404)
 
-@app.route('/customers', methods=['POST'])
+@app.route('/customers', methods=['POST']) # tested
 def create_customer():
     if not request.json or not 'email' in request.json:
         return make_response(jsonify({"error": "Bad request"}), 400)
@@ -68,7 +68,7 @@ def create_customer():
     conn.close()
     return make_response(jsonify(customer), 201)
 
-@app.route('/customers/<int:id>', methods=['PUT'])
+@app.route('/customers/<int:id>', methods=['PUT']) # tested
 def update_customer(id):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -78,17 +78,22 @@ def update_customer(id):
         return make_response(jsonify({"error": "Customer not found"}), 404)
     data = request.json
     updates = []
+    values = []
     for field in ['Nom', 'Prenom', 'Email', 'Telephone', 'Adresse', 'Ville', 'CodePostal', 'Pays']:
         if field in data:
             updates.append(f"{field} = %s")
+            values.append(data[field])
+    values.append(id)
     update_query = "UPDATE Clients SET " + ", ".join(updates) + " WHERE ClientID = %s"
-    cursor.execute(update_query, [data[field] for field in data if field in updates] + [id])
+    cursor.execute(update_query, values)
     conn.commit()
     cursor.close()
     conn.close()
     return jsonify({"success": "Customer updated"})
 
-@app.route('/customers/<int:id>', methods=['DELETE'])
+
+
+@app.route('/customers/<int:id>', methods=['DELETE']) #tested but have to delete a foreign key 
 def delete_customer(id):
     conn = get_db_connection()
     cursor = conn.cursor()
