@@ -2,42 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="connexion à la bd a distance réussie">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/MSPR_dev.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/.npmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/bower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/changelog.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/_flask.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/core/_core.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/core/debug/_flask-error.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-fallback.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-family-key.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-family.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-family.mixin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-feature-settings.mixin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-modifiers.mixin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-name.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-stack.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font-type.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font.mixin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/font/_font.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/palette/_palette-color-key.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/palette/_palette.function.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/flask/sass/palette/_palette.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +44,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -130,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1715594202739</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="connexion à la bd a distance réussie">
+      <created>1717414115511</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717414115513</updated>
+    </task>
+    <task id="LOCAL-00003" summary="connexion à la bd a distance réussie">
+      <created>1717414164528</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717414164532</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,7 +136,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py</url>
-          <line>105</line>
+          <line>104</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

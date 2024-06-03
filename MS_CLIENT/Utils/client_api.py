@@ -13,10 +13,9 @@ db_config = {
     'host': os.getenv('DB_HOST'),
     'port': 3306,
     'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
+    'password': os.getenv('DB_PASS'),
     'db': os.getenv('DB_NAME'),
-    'charset': os.getenv('DB_CHARSET'),
-    'cursorclass': pymysql.cursors.DictCursor
+
 }
 
 def get_db_connection():
