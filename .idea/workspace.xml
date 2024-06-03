@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="config .env modifiée pour prendre en compte la BD commande et commande.py aussi pour s'adapter">
+    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="postman fonctionne, une méthode patch est à prévoir">
+      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/Utils/produit_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,9 +98,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="produit_api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MSPR_dev" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MS_PRODUIT/Utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MS_PRODUIT/Utils/produit_api.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.commande_api" />
+        <item itemvalue="Python.produit_api" />
         <item itemvalue="Python.client_api" />
       </list>
     </recent_temporary>
@@ -153,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717419431393</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="postman fonctionne, une méthode patch est à prévoir">
+      <created>1717420608620</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717420608620</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,7 +205,8 @@
     <MESSAGE value="la config a prendre" />
     <MESSAGE value="le fichier env correspondant" />
     <MESSAGE value="config .env modifiée pour prendre en compte la BD commande et commande.py aussi pour s'adapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="config .env modifiée pour prendre en compte la BD commande et commande.py aussi pour s'adapter" />
+    <MESSAGE value="postman fonctionne, une méthode patch est à prévoir" />
+    <option name="LAST_COMMIT_MESSAGE" value="postman fonctionne, une méthode patch est à prévoir" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

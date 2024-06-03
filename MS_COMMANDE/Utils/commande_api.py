@@ -70,12 +70,18 @@ def update_commande(id):
     if not commande:
         return make_response(jsonify({"error": "Commande not found"}), 404)
     data = request.json
+    print("here", data)
     updates = []
+    values = []
+
     for field in ['ClientID', 'DateCommande', 'Statut', 'MontantTotal']:
         if field in data:
             updates.append(f"{field} = %s")
+            values.append(data[field])
+    values.append(id)
     update_query = "UPDATE Commandes SET " + ", ".join(updates) + " WHERE CommandeID = %s"
-    cursor.execute(update_query, [data[field] for field in data if field in updates] + [id])
+    print("update final",update_query)
+    cursor.execute(update_query, values)
     conn.commit()
     cursor.close()
     conn.close()
@@ -96,6 +102,6 @@ def delete_commande(id):
         return make_response(jsonify({"error": "Commande not found"}), 404)
 
 
-# penser à faire la méthode patch afin d'éviter d'écraser tous les id avec les modifs d'une seule commandes
+# penser à faire la méthode patch afin d'éviter d'écraser tous les id semblale à celui que je veux avec les modifs d'une seule commandes
 if __name__ == '__main__':
     app.run(debug=True)
