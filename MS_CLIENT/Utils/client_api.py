@@ -14,7 +14,7 @@ db_config = {
     'port': 3306,
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
-    'db': os.getenv('DB_NAME'),
+    'db': os.getenv('DB_NAME_cl'),
 
 }
 
