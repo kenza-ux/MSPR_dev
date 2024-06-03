@@ -19,7 +19,7 @@ def get_db_connection():
     connection = pymysql.connect(**db_config)
     return connection
 
-@app.route('/commandes', methods=['GET'])
+@app.route('/commandes', methods=['GET']) #méthode testée
 def get_commandes():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -29,7 +29,7 @@ def get_commandes():
     conn.close()
     return jsonify(commandes)
 
-@app.route('/commandes/<int:id>', methods=['GET'])
+@app.route('/commandes/<int:id>', methods=['GET']) #méthode testée
 def get_commande(id):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -42,7 +42,7 @@ def get_commande(id):
     else:
         return make_response(jsonify({"error": "Commande not found"}), 404)
 
-@app.route('/commandes', methods=['POST'])
+@app.route('/commandes', methods=['POST']) # méthode testée
 def create_commande():
     if not request.json or not 'ClientID' in request.json or not 'DateCommande' in request.json or not 'MontantTotal' in request.json:
         return make_response(jsonify({"error": "Bad request"}), 400)
@@ -61,7 +61,7 @@ def create_commande():
     conn.close()
     return make_response(jsonify(commande), 201)
 
-@app.route('/commandes/<int:id>', methods=['PUT'])
+@app.route('/commandes/<int:id>', methods=['PUT']) #méthode testée
 def update_commande(id):
     conn = get_db_connection()
     cursor = conn.cursor()

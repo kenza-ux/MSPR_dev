@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="postman fonctionne, une méthode patch est à prévoir">
-      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/Utils/produit_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="méthode put mise à jour et fonctionnelle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" afterDir="false" />
     </list>
@@ -185,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717420608620</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="méthode put mise à jour et fonctionnelle">
+      <created>1717423228161</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717423228161</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +211,8 @@
     <MESSAGE value="le fichier env correspondant" />
     <MESSAGE value="config .env modifiée pour prendre en compte la BD commande et commande.py aussi pour s'adapter" />
     <MESSAGE value="postman fonctionne, une méthode patch est à prévoir" />
-    <option name="LAST_COMMIT_MESSAGE" value="postman fonctionne, une méthode patch est à prévoir" />
+    <MESSAGE value="méthode put mise à jour et fonctionnelle" />
+    <option name="LAST_COMMIT_MESSAGE" value="méthode put mise à jour et fonctionnelle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
