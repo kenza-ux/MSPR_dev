@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ${DB_NAME_cl}
+      MYSQL_DATABASE_cmd: ${DB_NAME_cmd}
+      MYSQL_DATABASE_prod: ${DB_NAME_prod}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  ms_client:
+    build:
+      context: ./MS_CLIENT
+    container_name: flask_api_1
+    env_file:
+      - .env
+    environment:
+      DB_NAME: ${DB_NAME_cl}
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db
+
+  ms_commande:
+    build:
+      context: ./MS_COMMANDE
+    container_name: flask_api_2
+    env_file:
+      - .env
+    environment:
+      DB_NAME: ${DB_NAME_cmd}
+    ports:
+      - "5002:5000"
+    depends_on:
+      - db
+
+  ms_produit:
+    build:
+      context: ./MS_PRODUIT
+    container_name: flask_api_3
+    env_file:
+      - .env
+    environment:
+      DB_NAME: ${DB_NAME_prod}
+    ports:
+      - "5003:5000"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

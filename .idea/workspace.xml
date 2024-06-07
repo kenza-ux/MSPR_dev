@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="commande_api modidifié avec delete qui marche">
-      <change afterPath="$PROJECT_DIR$/MS_CLIENT/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MS_COMMANDE/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MS_COMMANDE/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/requirements.txt" afterDir="false" />
+    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MS_CLIENT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_CLIENT/dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717746373227</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune">
+      <created>1717750644043</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1717750644043</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,7 +246,8 @@
     <MESSAGE value="commande.api modidifiée avec toutes les méthodes testée que j'ai notifié" />
     <MESSAGE value="produit.api modidifié avec toutes les méthodes testée que j'ai notifié avec #" />
     <MESSAGE value="commande_api modidifié avec delete qui marche" />
-    <option name="LAST_COMMIT_MESSAGE" value="commande_api modidifié avec delete qui marche" />
+    <MESSAGE value="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
