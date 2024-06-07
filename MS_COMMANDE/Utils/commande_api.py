@@ -87,7 +87,7 @@ def update_commande(id):
     conn.close()
     return jsonify({"success": "Commande updated"})
 
-@app.route('/commandes/<int:id>', methods=['DELETE'])
+@app.route('/commandes/<int:id>', methods=['DELETE']) #méthode testée
 def delete_commande(id):
     conn = get_db_connection()
     cursor = conn.cursor()
