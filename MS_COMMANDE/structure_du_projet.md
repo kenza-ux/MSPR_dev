@@ -5,7 +5,7 @@ Le projet est organisé de manière à suivre les meilleures pratiques de dével
 ## Structure Générale 🌳
 
 ```bash
-MS_CLIENT/
+MS_COMMANDE/
 │
 ├── .env
 ├── config.py
@@ -40,7 +40,7 @@ MS_CLIENT/
 
 - **`__init__.py`** : Initialise l'application Flask et configure les extensions comme SQLAlchemy et le logger. Contient la fonction `create_app()`.
 
-- **`models.py`** : Définit les modèles de base de données avec SQLAlchemy. Ici, nous avons le modèle `Client`.
+- **`models.py`** : Définit les modèles de base de données avec SQLAlchemy. Ici, nous avons le modèle `Commande`.
 
 - **`routes.py`** : Définit les routes de l'application. Utilise les modèles définis pour interagir avec la base de données et renvoyer des réponses JSON.
 
