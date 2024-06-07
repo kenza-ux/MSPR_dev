@@ -4,6 +4,7 @@ Le projet est organisé de manière à suivre les meilleures pratiques de dével
 
 ## Structure Générale 🌳
 
+```bash
 MS_CLIENT/
 │
 ├── .env
@@ -26,6 +27,7 @@ MS_CLIENT/
 └── tests/
 ├── init.py
 └── test_db_connection.py
+```
 
 
 
