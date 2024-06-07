@@ -1,107 +1,144 @@
 import os
+import logging
 from flask import Flask, request, jsonify, make_response
-import pymysql
-import pymysql.cursors
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+from logging_config import configure_logging
+import urllib.parse
+
+load_dotenv()
 
 app = Flask(__name__)
 
-# Configuration de la connexion à la base de données
+# Configuration du logger
+logger = configure_logging()
+
+# Configure Flask's logger to use the same handler
+app.logger.handlers = logger.handlers
+app.logger.setLevel(logger.level)
+
+# Configuration de la base de données
 db_config = {
     'host': os.getenv('DB_HOST'),
-    'port': 3306,
+    'port': int(os.getenv('DB_PORT', 3306)),
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
-    'db': os.getenv('DB_NAME_cmd'),
-
+    'db': os.getenv('DB_NAME_cmd')
 }
 
-def get_db_connection():
-    connection = pymysql.connect(**db_config)
-    return connection
+# Encode password for SQLAlchemy URI
+encoded_password = urllib.parse.quote_plus(db_config['password'])
 
-@app.route('/commandes', methods=['GET']) #méthode testée
+# Configuration de la base de données avec SQLAlchemy
+db_uri = (
+    f"mysql+pymysql://{db_config['user']}:{encoded_password}"
+    f"@{db_config['host']}:{db_config['port']}/{db_config['db']}"
+)
+app.logger.debug(f"Database URI: {db_uri}")
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# Configuration de Flask pour utiliser FLASK_ENV depuis .env
+flask_env = os.getenv('FLASK_ENV')
+if flask_env:
+    app.config['ENV'] = flask_env
+    app.config['DEBUG'] = flask_env == 'development'
+
+# Modèle de la base de données
+class Commande(db.Model):
+    __tablename__ = 'Commandes'
+    CommandeID = db.Column(db.Integer, primary_key=True)
+    ClientID = db.Column(db.Integer)
+    DateCommande = db.Column(db.String(255))
+    Statut = db.Column(db.String(255))
+    MontantTotal = db.Column(db.Float)
+
+    def as_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+
+@app.route('/commandes', methods=['GET'])
 def get_commandes():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Commandes")
-    commandes = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return jsonify(commandes)
+    try:
+        commandes = Commande.query.all()
+        app.logger.info("Fetched commandes list")
+        return jsonify([commande.as_dict() for commande in commandes])
+    except Exception as e:
+        app.logger.error(f"Failed to fetch commandes: {e}")
+        return make_response(jsonify({"error": "Internal Server Error"}), 500)
 
-@app.route('/commandes/<int:id>', methods=['GET']) #méthode testée
+@app.route('/commandes/<int:id>', methods=['GET'])
 def get_commande(id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Commandes WHERE CommandeID = %s", (id,))
-    commande = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    if commande:
-        return jsonify(commande)
-    else:
-        return make_response(jsonify({"error": "Commande not found"}), 404)
+    try:
+        commande = Commande.query.get(id)
+        if commande:
+            app.logger.info(f"Commande {id} found")
+            return jsonify(commande.as_dict())
+        else:
+            app.logger.warning(f"Commande {id} not found")
+            return make_response(jsonify({"error": "Commande not found"}), 404)
+    except Exception as e:
+        app.logger.error(f"Failed to fetch commande {id}: {e}")
+        return make_response(jsonify({"error": "Internal Server Error"}), 500)
 
-@app.route('/commandes', methods=['POST']) # méthode testée
+@app.route('/commandes', methods=['POST'])
 def create_commande():
     if not request.json or not 'ClientID' in request.json or not 'DateCommande' in request.json or not 'MontantTotal' in request.json:
+        app.logger.warning("Bad request: Missing required fields")
         return make_response(jsonify({"error": "Bad request"}), 400)
-    commande = {
-        'ClientID': request.json['ClientID'],
-        'DateCommande': request.json['DateCommande'],
-        'Statut': request.json.get('Statut', 'En cours'),
-        'MontantTotal': request.json['MontantTotal']
-    }
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO Commandes (ClientID, DateCommande, Statut, MontantTotal) VALUES (%s, %s, %s, %s)",
-                   (commande['ClientID'], commande['DateCommande'], commande['Statut'], commande['MontantTotal']))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return make_response(jsonify(commande), 201)
+    try:
+        commande = Commande(
+            ClientID=request.json['ClientID'],
+            DateCommande=request.json['DateCommande'],
+            Statut=request.json.get('Statut', 'En cours'),
+            MontantTotal=request.json['MontantTotal']
+        )
+        db.session.add(commande)
+        db.session.commit()
+        app.logger.info("Created new commande")
+        return make_response(jsonify(commande.as_dict()), 201)
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error(f"Failed to create commande: {e}")
+        return make_response(jsonify({"error": "Internal Server Error"}), 500)
 
-@app.route('/commandes/<int:id>', methods=['PUT']) #méthode testée
+@app.route('/commandes/<int:id>', methods=['PUT'])
 def update_commande(id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Commandes WHERE CommandeID = %s", (id,))
-    commande = cursor.fetchone()
-    if not commande:
-        return make_response(jsonify({"error": "Commande not found"}), 404)
-    data = request.json
-    print("here", data)
-    updates = []
-    values = []
-
-    for field in ['ClientID', 'DateCommande', 'Statut', 'MontantTotal']:
-        if field in data:
-            updates.append(f"{field} = %s")
-            values.append(data[field])
-    values.append(id)
-    update_query = "UPDATE Commandes SET " + ", ".join(updates) + " WHERE CommandeID = %s"
-    print("update final",update_query)
-    cursor.execute(update_query, values)
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return jsonify({"success": "Commande updated"})
+    try:
+        commande = Commande.query.get(id)
+        if not commande:
+            app.logger.warning(f"Commande {id} not found for update")
+            return make_response(jsonify({"error": "Commande not found"}), 404)
+        
+        data = request.json
+        for key, value in data.items():
+            setattr(commande, key, value)
+        
+        db.session.commit()
+        app.logger.info(f"Updated commande {id}")
+        return jsonify({"success": "Commande updated"})
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error(f"Failed to update commande {id}: {e}")
+        return make_response(jsonify({"error": "Internal Server Error"}), 500)
 
 @app.route('/commandes/<int:id>', methods=['DELETE'])
 def delete_commande(id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM Commandes WHERE CommandeID = %s", (id,))
-    conn.commit()
-    affected_rows = cursor.rowcount
-    cursor.close()
-    conn.close()
-    if affected_rows:
+    try:
+        commande = Commande.query.get(id)
+        if not commande:
+            app.logger.warning(f"Commande {id} not found for deletion")
+            return make_response(jsonify({"error": "Commande not found"}), 404)
+        
+        db.session.delete(commande)
+        db.session.commit()
+        app.logger.info(f"Deleted commande {id}")
         return jsonify({"success": "Commande deleted"})
-    else:
-        return make_response(jsonify({"error": "Commande not found"}), 404)
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error(f"Failed to delete commande {id}: {e}")
+        return make_response(jsonify({"error": "Internal Server Error"}), 500)
 
-
-# penser à faire la méthode patch afin d'éviter d'écraser tous les id semblale à celui que je veux avec les modifs d'une seule commandes
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
