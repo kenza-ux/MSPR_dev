@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="produit.api modidifié avec toutes les méthodes testée que j'ai notifié avec #">
+    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="commande_api modidifié avec delete qui marche">
+      <change afterPath="$PROJECT_DIR$/MS_CLIENT/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MS_COMMANDE/dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MS_COMMANDE/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_CLIENT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_CLIENT/dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="temurin-17" />
     <property name="jdk.selected.PYTHON_MODULE" value="Python 3.9 (MSPR_dev)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MS_PRODUIT" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -47,6 +52,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MS_PRODUIT" />
+      <recent name="$PROJECT_DIR$/MS_COMMANDE" />
+      <recent name="$PROJECT_DIR$/MS_CLIENT" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -204,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717745595367</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commande_api modidifié avec delete qui marche">
+      <created>1717746373223</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717746373227</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -228,7 +243,8 @@
     <MESSAGE value="méthode put mise à jour et fonctionnelle" />
     <MESSAGE value="commande.api modidifiée avec toutes les méthodes testée que j'ai notifié" />
     <MESSAGE value="produit.api modidifié avec toutes les méthodes testée que j'ai notifié avec #" />
-    <option name="LAST_COMMIT_MESSAGE" value="produit.api modidifié avec toutes les méthodes testée que j'ai notifié avec #" />
+    <MESSAGE value="commande_api modidifié avec delete qui marche" />
+    <option name="LAST_COMMIT_MESSAGE" value="commande_api modidifié avec delete qui marche" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
