@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, make_response
-from .app.models import db, Commande
+from .models import db, Commande
 
 routes = Blueprint('routes', __name__)
 
@@ -15,7 +15,7 @@ def get_commandes():
 @routes.route('/commandes/<int:id>', methods=['GET'])
 def get_commande(id):
     try:
-        commande = Commande.query.get(id)
+        commande = db.session.get(Commande, id)
         if commande:
             return jsonify(commande.as_dict())
         else:
@@ -46,7 +46,7 @@ def create_commande():
 @routes.route('/commandes/<int:id>', methods=['PUT'])
 def update_commande(id):
     try:
-        commande = Commande.query.get(id)
+        commande = db.session.get(Commande, id)
         if not commande:
             return make_response(jsonify({"error": "Commande non trouvée"}), 404)
         
@@ -64,7 +64,7 @@ def update_commande(id):
 @routes.route('/commandes/<int:id>', methods=['DELETE'])
 def delete_commande(id):
     try:
-        commande = Commande.query.get(id)
+        commande = db.session.get(Commande, id)
         if not commande:
             return make_response(jsonify({"error": "Commande non trouvée"}), 404)
         
