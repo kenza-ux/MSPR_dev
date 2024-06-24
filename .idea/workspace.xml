@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="c2250e1f-2f24-4c0e-a63f-6b23621b1cc9" name="Changes" comment="dockerfile-compose ajouté, et lancement réussi des 3 apis simultaménent">
+      <change afterPath="$PROJECT_DIR$/MS_CLIENT/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MS_PRODUIT/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_CLIENT/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MS_CLIENT/dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_COMMANDE/Utils/commande_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_COMMANDE/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MS_COMMANDE/dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_PRODUIT/Utils/produit_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MS_PRODUIT/Utils/produit_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MS_PRODUIT/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MS_PRODUIT/dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +56,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/MS_PRODUIT" />
-      <recent name="$PROJECT_DIR$/MS_COMMANDE" />
       <recent name="$PROJECT_DIR$/MS_CLIENT" />
+      <recent name="$PROJECT_DIR$/MS_COMMANDE" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -221,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717750644043</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dockerfile-compose ajouté, et lancement réussi des 3 apis simultaménent">
+      <created>1717752626367</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717752626368</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,17 +262,7 @@
     <MESSAGE value="produit.api modidifié avec toutes les méthodes testée que j'ai notifié avec #" />
     <MESSAGE value="commande_api modidifié avec delete qui marche" />
     <MESSAGE value="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirment.txt rajouté à chaque api séparemment avec le dockerfile crée pour chacune" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/MS_CLIENT/Utils/client_api.py</url>
-          <line>104</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="dockerfile-compose ajouté, et lancement réussi des 3 apis simultaménent" />
+    <option name="LAST_COMMIT_MESSAGE" value="dockerfile-compose ajouté, et lancement réussi des 3 apis simultaménent" />
   </component>
 </project>

@@ -12,7 +12,6 @@ db_config = {
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
     'db': os.getenv('DB_NAME_cmd'),
-
 }
 
 def get_db_connection():
@@ -104,4 +103,4 @@ def delete_commande(id):
 
 # penser à faire la méthode patch afin d'éviter d'écraser tous les id semblale à celui que je veux avec les modifs d'une seule commandes
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
