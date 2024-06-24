@@ -1,47 +1,53 @@
-name: MS_COMMANDE CI
+name: MS_COMMANDE CI Workflow
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_USER: user
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Nécessaire pour les opérations Git qui nécessitent l'historique complet
+          token: ${{ secrets.MY_PAT }}
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.12.0' 
 
       - name: Install dependencies
         run: |
           cd MS_COMMANDE
-          python -m venv env
-          source env/bin/activate
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Run tests with pytest
+        id: pytest
         env:
           DATABASE_URL: postgresql://user:password@localhost:5432/test_db
         run: |
           cd MS_COMMANDE
-          source env/bin/activate
-          pytest --maxfail=1 --disable-warnings -q
+          pytest
+
+      - name: test_ok
+        if: success()
+        run: |
+          git fetch
+          git checkout main
+          git merge --ff-only origin/dev
+          git push origin main
+          
+      - name: test_ko
+        if: failure()
+        run: |
+          unique_branch_suffix=$(date +%s)
+          git checkout -b MS_COMMANDE/$unique_branch_suffix
+          git push origin MS_COMMANDE/$unique_branch_suffix
+          
+          git checkout dev
+          git reset --soft HEAD~1
+          git push origin dev --force
