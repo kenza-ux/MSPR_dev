@@ -1,17 +1,10 @@
 from flask import Blueprint, request, jsonify, make_response
 from .models import db, Client
 
-# Création du blueprint pour les routes
-routes = Blueprint('routes', __name__)
+routes = Blueprint('routes', 'routes')
 
 @routes.route('/customers', methods=['GET'])
 def get_customers():
-    """
-    Récupère tous les clients de la base de données.
-    
-    Retourne:
-        Response: Une réponse JSON contenant la liste des clients.
-    """
     try:
         customers = Client.query.all()
         return jsonify([customer.as_dict() for customer in customers])
@@ -21,17 +14,8 @@ def get_customers():
 
 @routes.route('/customers/<int:id>', methods=['GET'])
 def get_customer(id):
-    """
-    Récupère un client spécifique par ID.
-    
-    Arguments:
-        id (int): L'ID du client à récupérer.
-    
-    Retourne:
-        Response: Une réponse JSON contenant les données du client ou un message d'erreur.
-    """
     try:
-        customer = Client.query.get(id)
+        customer = db.session.get(Client, id)
         if customer:
             return jsonify(customer.as_dict())
         else:
@@ -42,12 +26,6 @@ def get_customer(id):
 
 @routes.route('/customers', methods=['POST'])
 def create_customer():
-    """
-    Crée un nouveau client.
-    
-    Retourne:
-        Response: Une réponse JSON contenant les données du client créé ou un message d'erreur.
-    """
     if not request.json or not 'Email' in request.json:
         return make_response(jsonify({"error": "Requête incorrecte"}), 400)
     try:
@@ -71,17 +49,8 @@ def create_customer():
 
 @routes.route('/customers/<int:id>', methods=['PUT'])
 def update_customer(id):
-    """
-    Met à jour un client existant par ID.
-    
-    Arguments:
-        id (int): L'ID du client à mettre à jour.
-    
-    Retourne:
-        Response: Une réponse JSON contenant un message de succès ou un message d'erreur.
-    """
     try:
-        customer = Client.query.get(id)
+        customer = db.session.get(Client, id)
         if not customer:
             return make_response(jsonify({"error": "Client non trouvé"}), 404)
         
@@ -98,17 +67,8 @@ def update_customer(id):
 
 @routes.route('/customers/<int:id>', methods=['DELETE'])
 def delete_customer(id):
-    """
-    Supprime un client existant par ID.
-    
-    Arguments:
-        id (int): L'ID du client à supprimer.
-    
-    Retourne:
-        Response: Une réponse JSON contenant un message de succès ou un message d'erreur.
-    """
     try:
-        customer = Client.query.get(id)
+        customer = db.session.get(Client, id)
         if not customer:
             return make_response(jsonify({"error": "Client non trouvé"}), 404)
         

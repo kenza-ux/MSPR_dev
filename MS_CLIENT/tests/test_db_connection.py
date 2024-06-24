@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, text
-from config import Config
+from MS_CLIENT.config import Config
 
 def test_connection():
     engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)

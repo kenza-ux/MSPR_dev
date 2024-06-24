@@ -1,19 +1,26 @@
+# app.py
+
 from flask import Flask
 from sqlalchemy import text
 from config import Config
 from app.models import db
 from app.routes import routes
-from app.utils.logging_config import configure_logging
+from app.Utils.logging_config import configure_logging
 
-def create_app():
+def create_app(config_class=Config):
     """
     Crée et configure l'application Flask.
+
+    Args:
+        config_class (class): La classe de configuration à utiliser.
 
     Retourne:
         app (Flask): L'application Flask configurée.
     """
+    print("create_app function is being called")  # Ligne de débogage
+
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     # Configuration du logger
     logger = configure_logging()
