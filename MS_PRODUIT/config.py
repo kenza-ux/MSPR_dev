@@ -1,7 +1,10 @@
+# config.py
+
 import os
 from dotenv import load_dotenv
 import urllib.parse
 
+# Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
 
 class Config:
@@ -18,3 +21,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     ENV = os.getenv('FLASK_ENV')
     DEBUG = ENV == 'development'
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    DEBUG = True

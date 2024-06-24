@@ -15,7 +15,7 @@ def get_produits():
 @routes.route('/produits/<int:id>', methods=['GET'])
 def get_produit(id):
     try:
-        produit = Produit.query.get(id)
+        produit = db.session.get(Produit, id)
         if produit:
             return jsonify(produit.as_dict())
         else:
@@ -47,7 +47,7 @@ def create_produit():
 @routes.route('/produits/<int:id>', methods=['PUT'])
 def update_produit(id):
     try:
-        produit = Produit.query.get(id)
+        produit = db.session.get(Produit, id)
         if not produit:
             return make_response(jsonify({"error": "Produit non trouvé"}), 404)
         
@@ -65,7 +65,7 @@ def update_produit(id):
 @routes.route('/produits/<int:id>', methods=['DELETE'])
 def delete_produit(id):
     try:
-        produit = Produit.query.get(id)
+        produit = db.session.get(Produit, id)
         if not produit:
             return make_response(jsonify({"error": "Produit non trouvé"}), 404)
         
